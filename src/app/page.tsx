@@ -69,16 +69,7 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-              <a
-                href={mapLinkGoogle}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:-translate-y-[1px] hover:border-white/30"
-              >
-                Navigasyonda Aç
-              </a>
-            </div>
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center" />
 
             <div className="grid gap-4 sm:grid-cols-2">
               {contacts.map((contact) => (
@@ -168,7 +159,7 @@ export default function Home() {
                 className="flex items-center justify-between rounded-2xl border border-white/15 bg-black/30 px-4 py-3 text-sm font-semibold transition hover:border-white/30"
               >
                 <span className="flex items-center gap-2">🧭 Google Maps</span>
-                <span className="text-white/70 text-xs">Yönlendirmeyi başlat</span>
+                <span className="text-white/70 text-xs">Yol tarifi al</span>
               </a>
               <a
                 href={mapLinkApple}
@@ -177,7 +168,7 @@ export default function Home() {
                 className="flex items-center justify-between rounded-2xl border border-white/15 bg-black/30 px-4 py-3 text-sm font-semibold transition hover:border-white/30"
               >
                 <span className="flex items-center gap-2">🗺️ Apple Maps</span>
-                <span className="text-white/70 text-xs">iOS için</span>
+                <span className="text-white/70 text-xs">Yol tarifi al</span>
               </a>
             </div>
             <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white/90 bg-white/5">
