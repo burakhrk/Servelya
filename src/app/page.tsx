@@ -1,4 +1,12 @@
-const brands = ["BMW", "Mercedes", "Range Rover", "Porsche", "Audi"];
+﻿import Image from "next/image";
+
+const brands = [
+  { name: "BMW", logo: "/logo-bmw.svg" },
+  { name: "Mercedes", logo: "/logo-mercedes.svg" },
+  { name: "Range Rover", logo: "/logo-rangerover.svg" },
+  { name: "Porsche", logo: "/logo-porsche.svg" },
+  { name: "Audi", logo: "/logo-audi.svg" },
+];
 
 const services = [
   "BMW ve Mercedes orijinal cihazlarla arıza tespiti",
@@ -13,8 +21,9 @@ const contacts = [
   { name: "Hasan Y.", phone: "0543 942 54 33" },
 ];
 
-const mapLink =
+const mapLinkGoogle =
   "https://www.google.com/maps/search/Servelya+Premium+Car+Service";
+const mapLinkApple = "https://maps.apple.com/?q=Servelya%20Premium%20Car%20Service";
 
 export default function Home() {
   return (
@@ -40,17 +49,23 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-wide text-slate-200">
+            <div className="flex flex-wrap items-center gap-4">
               {brands.map((brand) => (
-                <span
-                  key={brand}
-                  className="inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-1"
+                <div
+                  key={brand.name}
+                  className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2"
                 >
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full border border-white/20 bg-white/5 text-[10px] font-bold text-white">
-                    {brand.slice(0, 2)}
+                  <Image
+                    src={brand.logo}
+                    alt={`${brand.name} logo`}
+                    width={28}
+                    height={28}
+                    className="h-7 w-7 object-contain"
+                  />
+                  <span className="text-xs font-semibold uppercase tracking-wide text-slate-200">
+                    {brand.name}
                   </span>
-                  {brand}
-                </span>
+                </div>
               ))}
             </div>
 
@@ -62,7 +77,7 @@ export default function Home() {
                 Hemen Ara
               </a>
               <a
-                href={mapLink}
+                href={mapLinkGoogle}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:-translate-y-[1px] hover:border-white/30"
@@ -78,7 +93,7 @@ export default function Home() {
                   className="rounded-2xl border border-white/10 bg-white/5 p-4"
                 >
                   <p className="text-xs uppercase tracking-[0.2em] text-slate-300">
-                    İletişim
+                    Ä°letiÅŸim
                   </p>
                   <p className="mt-2 text-lg font-semibold text-white">
                     {contact.name}
@@ -87,7 +102,7 @@ export default function Home() {
                 href={`tel:${contact.phone.replace(/\D/g, "")}`}
                 className="mt-1 inline-flex w-max items-center gap-2 text-base font-semibold text-slate-50 hover:text-white"
               >
-                📞 {contact.phone}
+                ðŸ“ž {contact.phone}
               </a>
                   <a
                     href={`tel:${contact.phone.replace(/\D/g, "")}`}
@@ -118,7 +133,7 @@ export default function Home() {
                   Servis Özeti
                 </p>
                 <h2 className="mt-1 text-2xl font-bold text-white">
-                  Premium bakım & onarım
+                  Premium bakÄ±m & onarÄ±m
                 </h2>
               </div>
               <div className="h-12 w-12 rounded-full bg-gradient-to-br from-[#e53935] to-[#3b82f6] opacity-80" />
@@ -144,52 +159,68 @@ export default function Home() {
         </section>
 
         <section className="grid gap-4 sm:grid-cols-2">
-          <a
-            href={`tel:+90${contacts[0].phone.replace(/\D/g, "")}`}
-            className="group relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-[#e53935] via-[#ef4444] to-[#f97316] p-5 text-white shadow-2xl shadow-[#e53935]/25 transition hover:-translate-y-[2px]"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/10 opacity-0 transition group-hover:opacity-20" />
+          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-5 text-white shadow-2xl shadow-black/25">
+            <p className="text-xs uppercase tracking-[0.3em] text-white/80">Ana CTA</p>
+            <h3 className="mt-2 text-2xl font-bold">Navigasyonda Aç</h3>
+            <p className="mt-2 text-sm text-white/80">
+              Hangi haritayÄ± kullanmak istersiniz?
+            </p>
+            <div className="mt-4 grid gap-2 sm:grid-cols-2">
+              <a
+                href={mapLinkGoogle}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-between rounded-2xl border border-white/15 bg-black/30 px-4 py-3 text-sm font-semibold transition hover:border-white/30"
+              >
+                <span className="flex items-center gap-2">
+                  ðŸ§­ Google Maps
+                </span>
+                <span className="text-white/70 text-xs">Yönlendirmeyi başlat</span>
+              </a>
+              <a
+                href={mapLinkApple}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-between rounded-2xl border border-white/15 bg-black/30 px-4 py-3 text-sm font-semibold transition hover:border-white/30"
+              >
+                <span className="flex items-center gap-2">
+                  ðŸ—ºï¸ Apple Maps
+                </span>
+                <span className="text-white/70 text-xs">iOS için</span>
+              </a>
+            </div>
+            <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white/90">
+              Navigasyonda Aç
+            </div>
+          </div>
+
+          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-[#e53935] via-[#ef4444] to-[#f97316] p-5 text-white shadow-2xl shadow-[#e53935]/25">
             <p className="text-xs uppercase tracking-[0.3em] text-white/80">
-              Ana CTA
+              Ä°kinci CTA
             </p>
             <h3 className="mt-2 text-2xl font-bold">Hemen Ara</h3>
             <p className="mt-2 text-sm text-white/90">
-              {contacts[0].name} · {contacts[0].phone}
+              Usta ile direkt konuÅŸ, hÄ±zlÄ± randevu al.
             </p>
-            <p className="text-sm text-white/70">
-              {contacts[1].name} · {contacts[1].phone}
-            </p>
-            <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-wide">
-              📞 Tek dokunuşla ara
+            <div className="mt-4 grid gap-2 sm:grid-cols-2">
+              {contacts.map((contact) => (
+                <a
+                  key={contact.phone}
+                  href={`tel:${contact.phone.replace(/\D/g, "")}`}
+                  className="flex items-center justify-between rounded-2xl border border-white/25 bg-white/10 px-4 py-3 text-sm font-semibold transition hover:border-white/50"
+                >
+                  <span className="flex flex-col">
+                    <span className="text-white">{contact.name}</span>
+                    <span className="text-white/80 text-xs">{contact.phone}</span>
+                  </span>
+                  <span className="text-lg">ðŸ“ž</span>
+                </a>
+              ))}
             </div>
-          </a>
-
-          <a
-            href={mapLink}
-            target="_blank"
-            rel="noreferrer"
-            className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-5 text-white shadow-2xl shadow-black/25 transition hover:-translate-y-[2px]"
-          >
-            <p className="text-xs uppercase tracking-[0.3em] text-white/80">
-              Ana CTA
-            </p>
-            <h3 className="mt-2 text-2xl font-bold">Navigasyonda Aç</h3>
-            <p className="mt-2 text-sm text-white/80">
-              Tek tıkla haritada konuma git, güzergâhı başlat.
-            </p>
-            <div className="mt-4 flex items-center gap-3 rounded-2xl border border-white/10 bg-black/30 p-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#0ea5e9] to-[#22d3ee] text-xl">
-                🗺️
-              </div>
-              <div className="flex flex-col text-sm text-slate-200">
-                <span className="font-semibold text-white">Haritada aç</span>
-                <span className="text-slate-300">Google Maps yönlendirme</span>
-              </div>
+            <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-wide">
+              Tek dokunuÅŸla ara
             </div>
-            <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white/90">
-              🧭 Yol tarifini başlat
-            </div>
-          </a>
+          </div>
         </section>
 
         <section className="grid gap-6 rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl shadow-black/30 backdrop-blur sm:grid-cols-2">
@@ -201,7 +232,7 @@ export default function Home() {
               Servelya Premium Servis
             </h3>
             <p className="text-sm text-slate-200">
-              Navigasyonda “Servelya Premium” araması ile bize ulaşabilir, arayarak aynı gün için
+              Navigasyonda “Servelya Premium” araması ile bize ulaşabilir, arayarak Aynı gün için
               randevu alabilirsiniz.
             </p>
             <div className="flex flex-col gap-2 text-sm text-slate-100">
@@ -211,16 +242,16 @@ export default function Home() {
                 href={`tel:${contact.phone.replace(/\D/g, "")}`}
                 className="inline-flex w-max items-center gap-2 rounded-full border border-white/10 px-4 py-2 transition hover:border-white/30"
               >
-                📞 {contact.name} — {contact.phone}
+                ðŸ“ž {contact.name} â€” {contact.phone}
               </a>
               ))}
               <a
-                href={mapLink}
+                href={mapLinkGoogle}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex w-max items-center gap-2 rounded-full border border-white/10 px-4 py-2 transition hover:border-white/30"
               >
-                📍 Navigasyonda aç
+                ðŸ“ Navigasyonda Aç
               </a>
             </div>
           </div>
@@ -233,14 +264,14 @@ export default function Home() {
               </span>
             </div>
             <ul className="space-y-2">
-              <li>Hata lambası ve arıza tespiti</li>
-              <li>Periyodik bakım ve yağ değişimi</li>
+              <li>Hata lambasÄ± ve arÄ±za tespiti</li>
+              <li>Periyodik bakÄ±m ve yaÄŸ deÄŸiÅŸimi</li>
               <li>Fren balata & disk kontrolü</li>
-              <li>Mini onarım ve boya rötuşu</li>
+              <li>Mini onarÄ±m ve boya rötuşu</li>
             </ul>
             <p className="text-xs text-slate-400">
               Premium segment araçlara özel ekipman ve ölçüm değerleriyle çalışılır; teslim öncesi
-              son kontrol yapılır.
+              son kontrol yapÄ±lÄ±r.
             </p>
           </div>
         </section>
@@ -248,3 +279,6 @@ export default function Home() {
     </div>
   );
 }
+
+
+
