@@ -62,8 +62,8 @@ export default function Home() {
         <div className="absolute right-0 top-32 h-72 w-72 rounded-full bg-[#ef4444]/10 blur-3xl" />
       </div>
 
-      <main className="relative z-10 mx-auto flex w-full max-w-screen-lg flex-col gap-16 px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
-        <section className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+      <main className="relative z-10 mx-auto flex w-full max-w-screen-md flex-col gap-12 px-4 py-14 sm:px-5 lg:px-6 lg:py-18">
+        <section className="grid items-start gap-10 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="space-y-6">
             <p className="text-xs uppercase tracking-[0.35em] text-slate-300">
               Premium Car Service
