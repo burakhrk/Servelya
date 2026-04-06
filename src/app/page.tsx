@@ -116,6 +116,33 @@ export default function Home() {
 
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center" />
 
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-5 text-white shadow-2xl shadow-black/25">
+              <h3 className="text-2xl font-bold">Yol Tarifi Al</h3>
+              <p className="mt-2 text-sm text-white/80">
+                Hangi haritayı kullanmak istersiniz?
+              </p>
+              <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                <a
+                  href={mapLinkGoogle}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center justify-between rounded-2xl border border-white/15 bg-black/30 px-4 py-3 text-sm font-semibold transition hover:border-white/30"
+                >
+                  <span className="flex items-center gap-2">🧭 Google Haritalar</span>
+                  <span className="text-white/70 text-xs">Yol tarifi al</span>
+                </a>
+                <a
+                  href={mapLinkApple}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center justify-between rounded-2xl border border-white/15 bg-black/30 px-4 py-3 text-sm font-semibold transition hover:border-white/30"
+                >
+                  <span className="flex items-center gap-2">🗺️ Apple Haritalar</span>
+                  <span className="text-white/70 text-xs">Yol tarifi al</span>
+                </a>
+              </div>
+            </div>
+
             <div className="grid gap-4 sm:grid-cols-2">
               {contacts.map((contact) => (
                 <div
@@ -186,38 +213,6 @@ export default function Home() {
             <div className="mt-5 rounded-2xl border border-white/5 bg-black/30 p-4 text-sm text-slate-200">
               Premium segment araçlar için teşhis, bakım ve boya/kaporta süreçleri tek noktada
               yönetilir; gerekli olduğunda yetkili servis geçmişiyle uyumlu parçalar kullanılır.
-            </div>
-          </div>
-        </section>
-
-        <section className="grid gap-4">
-          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-5 text-white shadow-2xl shadow-black/25">
-            <h3 className="text-2xl font-bold">Navigasyonda Aç</h3>
-            <p className="mt-2 text-sm text-white/80">
-              Hangi haritayı kullanmak istersiniz?
-            </p>
-            <div className="mt-4 grid gap-2 sm:grid-cols-2">
-              <a
-                href={mapLinkGoogle}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center justify-between rounded-2xl border border-white/15 bg-black/30 px-4 py-3 text-sm font-semibold transition hover:border-white/30"
-              >
-                <span className="flex items-center gap-2">🧭 Google Maps</span>
-                <span className="text-white/70 text-xs">Yol tarifi al</span>
-              </a>
-              <a
-                href={mapLinkApple}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center justify-between rounded-2xl border border-white/15 bg-black/30 px-4 py-3 text-sm font-semibold transition hover:border-white/30"
-              >
-                <span className="flex items-center gap-2">🗺️ Apple Maps</span>
-                <span className="text-white/70 text-xs">Yol tarifi al</span>
-              </a>
-            </div>
-            <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white/90 bg-white/5">
-              Navigasyonda Aç
             </div>
           </div>
         </section>
