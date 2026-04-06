@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 const brands = [
   { name: "BMW", logo: "/logo-bmw.svg" },
   { name: "Mercedes", logo: "/logo-mercedes.svg" },
@@ -29,6 +29,7 @@ const mapLinkApple = "https://maps.apple.com/?q=Servelya%20Premium%20Car%20Servi
 
 function MarqueeBrands() {
   const trackRef = useRef<HTMLDivElement>(null);
+  const scrollTimer = useRef<NodeJS.Timeout | null>(null);
   const [dragging, setDragging] = useState(false);
   const startX = useRef(0);
   const scrollStart = useRef(0);
@@ -50,14 +51,45 @@ function MarqueeBrands() {
 
   const items = [...brands, ...brands];
 
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+
+    // start auto scroll when not dragging
+    if (!dragging) {
+      scrollTimer.current = setInterval(() => {
+        el.scrollLeft += 0.6;
+        const half = el.scrollWidth / 2;
+        if (el.scrollLeft >= half) {
+          el.scrollLeft -= half;
+        }
+      }, 16);
+    }
+
+    return () => {
+      if (scrollTimer.current) {
+        clearInterval(scrollTimer.current);
+        scrollTimer.current = null;
+      }
+    };
+  }, [dragging]);
+
+  // ensure timer cleared on unmount
+  useEffect(() => {
+    return () => {
+      if (scrollTimer.current) {
+        clearInterval(scrollTimer.current);
+      }
+    };
+  }, []);
+
   return (
     <div className="group relative w-full overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-3 shadow-inner">
       <div
         ref={trackRef}
-        className={`marquee-track flex items-center gap-6 overflow-x-auto px-1 py-1 scrollbar-hide ${
+        className={`flex items-center gap-6 overflow-x-auto px-1 py-1 scrollbar-hide ${
           dragging ? "cursor-grabbing" : "cursor-grab"
         }`}
-        style={{ animationPlayState: dragging ? "paused" : "running" }}
         onMouseDown={(e) => {
           e.preventDefault();
           handlePointerDown(e.clientX);
