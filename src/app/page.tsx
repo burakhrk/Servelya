@@ -30,8 +30,8 @@ function MarqueeBrands() {
   const items = [...brands, ...brands];
 
   return (
-    <div className="relative w-full overflow-hidden rounded-2xl border border-white/10 bg-white/5 px-1 py-2 shadow-inner">
-      <div className="marquee-track flex items-center gap-6 px-1 py-1">
+    <div className="relative w-full overflow-hidden rounded-2xl border border-white/10 bg-white/5 py-2 shadow-inner">
+      <div className="marquee-track flex items-center gap-6 py-1">
         {items.map((brand, idx) => (
           <div
             key={`${brand.name}-${idx}`}
@@ -62,7 +62,7 @@ export default function Home() {
         <div className="absolute right-0 top-32 h-72 w-72 rounded-full bg-[#ef4444]/10 blur-3xl" />
       </div>
 
-      <main className="relative z-10 mx-auto flex w-full max-w-5xl flex-col gap-16 px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+      <main className="relative z-10 mx-auto flex w-full max-w-screen-lg flex-col gap-16 px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
         <section className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-6">
             <p className="text-xs uppercase tracking-[0.35em] text-slate-300">
@@ -81,7 +81,7 @@ export default function Home() {
 
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center" />
 
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-5 text-white shadow-2xl shadow-black/25 mx-1 sm:mx-2">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-5 text-white shadow-2xl shadow-black/25">
               <h3 className="text-2xl font-bold">Yol Tarifi Al</h3>
               <p className="mt-2 text-sm text-white/80">
                 Hangi haritayı kullanmak istersiniz?
