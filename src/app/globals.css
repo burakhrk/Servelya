@@ -59,6 +59,19 @@ body {
   animation: shine 8s linear infinite;
 }
 
+.marquee-track {
+  animation: marquee 24s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 .scrollbar-hide {
   scrollbar-width: none;
   -ms-overflow-style: none;

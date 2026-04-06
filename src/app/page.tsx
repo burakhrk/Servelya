@@ -1,7 +1,6 @@
 ﻿"use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
 const brands = [
   { name: "BMW", logo: "/logo-bmw.svg" },
   { name: "Mercedes", logo: "/logo-mercedes.svg" },
@@ -28,79 +27,11 @@ const mapLinkGoogle =
 const mapLinkApple = "https://maps.apple.com/?q=Servelya%20Premium%20Car%20Service";
 
 function MarqueeBrands() {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const scrollTimer = useRef<NodeJS.Timeout | null>(null);
-  const [dragging, setDragging] = useState(false);
-  const startX = useRef(0);
-  const scrollStart = useRef(0);
-
-  const handlePointerDown = (clientX: number) => {
-    if (!trackRef.current) return;
-    setDragging(true);
-    startX.current = clientX;
-    scrollStart.current = trackRef.current.scrollLeft;
-  };
-
-  const handlePointerMove = (clientX: number) => {
-    if (!dragging || !trackRef.current) return;
-    const delta = clientX - startX.current;
-    trackRef.current.scrollLeft = scrollStart.current - delta;
-  };
-
-  const stopDrag = () => setDragging(false);
-
   const items = [...brands, ...brands];
 
-  useEffect(() => {
-    const el = trackRef.current;
-    if (!el) return;
-
-    // start auto scroll when not dragging
-    if (!dragging) {
-      scrollTimer.current = setInterval(() => {
-        el.scrollLeft += 0.6;
-        const half = el.scrollWidth / 2;
-        if (el.scrollLeft >= half) {
-          el.scrollLeft -= half;
-        }
-      }, 16);
-    }
-
-    return () => {
-      if (scrollTimer.current) {
-        clearInterval(scrollTimer.current);
-        scrollTimer.current = null;
-      }
-    };
-  }, [dragging]);
-
-  // ensure timer cleared on unmount
-  useEffect(() => {
-    return () => {
-      if (scrollTimer.current) {
-        clearInterval(scrollTimer.current);
-      }
-    };
-  }, []);
-
   return (
-    <div className="group relative w-full overflow-hidden rounded-2xl border border-white/10 bg-white/5 px-1 py-2 shadow-inner">
-      <div
-        ref={trackRef}
-        className={`flex items-center gap-6 overflow-x-auto px-1 py-1 scrollbar-hide ${
-          dragging ? "cursor-grabbing" : "cursor-grab"
-        }`}
-        onMouseDown={(e) => {
-          e.preventDefault();
-          handlePointerDown(e.clientX);
-        }}
-        onMouseMove={(e) => handlePointerMove(e.clientX)}
-        onMouseUp={stopDrag}
-        onMouseLeave={stopDrag}
-        onTouchStart={(e) => handlePointerDown(e.touches[0].clientX)}
-        onTouchMove={(e) => handlePointerMove(e.touches[0].clientX)}
-        onTouchEnd={stopDrag}
-      >
+    <div className="relative w-full overflow-hidden rounded-2xl border border-white/10 bg-white/5 px-1 py-2 shadow-inner">
+      <div className="marquee-track flex items-center gap-6 px-1 py-1">
         {items.map((brand, idx) => (
           <div
             key={`${brand.name}-${idx}`}
@@ -150,7 +81,7 @@ export default function Home() {
 
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center" />
 
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-5 text-white shadow-2xl shadow-black/25">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-5 text-white shadow-2xl shadow-black/25 mx-1 sm:mx-2">
               <h3 className="text-2xl font-bold">Yol Tarifi Al</h3>
               <p className="mt-2 text-sm text-white/80">
                 Hangi haritayı kullanmak istersiniz?
