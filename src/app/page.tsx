@@ -30,8 +30,8 @@ function MarqueeBrands() {
   const items = [...brands, ...brands];
 
   return (
-    <div className="relative w-full overflow-hidden rounded-2xl border border-white/10 bg-white/5 py-2 shadow-inner box-border">
-      <div className="marquee-track flex w-[200%] items-center gap-6 py-1">
+    <div className="relative w-full overflow-hidden rounded-2xl border border-white/10 bg-white/5 py-3 shadow-inner box-border">
+      <div className="absolute left-0 top-0 flex w-max items-center gap-6 py-1 pl-3 animate-marquee">
         {items.map((brand, idx) => (
           <div
             key={`${brand.name}-${idx}`}
@@ -50,6 +50,7 @@ function MarqueeBrands() {
           </div>
         ))}
       </div>
+      <div className="h-12" />
     </div>
   );
 }
@@ -62,7 +63,7 @@ export default function Home() {
         <div className="absolute right-0 top-32 h-72 w-72 rounded-full bg-[#ef4444]/10 blur-3xl" />
       </div>
 
-      <main className="relative z-10 mx-auto flex w-full max-w-[960px] flex-col gap-12 px-4 py-14 sm:px-5 lg:px-6 lg:py-18 box-border">
+      <main className="relative z-10 mx-auto flex w-full max-w-screen-md flex-col gap-12 px-4 py-14 sm:px-5 lg:px-6 lg:py-18 box-border">
         <section className="grid items-start gap-10 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="space-y-6">
             <p className="text-xs uppercase tracking-[0.35em] text-slate-300">
