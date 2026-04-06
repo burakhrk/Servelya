@@ -1,4 +1,22 @@
-const brands = ["BMW", "Mercedes", "Range Rover", "Porsche", "Audi"];
+const brands = [
+  {
+    name: "BMW",
+    accent: "from-[#1c2c63] to-[#3f74f2]",
+    dot: "#3b82f6",
+  },
+  {
+    name: "Mercedes",
+    accent: "from-[#1a1f2c] to-[#6b7280]",
+    dot: "#9ca3af",
+  },
+  {
+    name: "Range Rover",
+    accent: "from-[#0b3622] to-[#1f8a4c]",
+    dot: "#22c55e",
+  },
+  { name: "Porsche", accent: "from-[#3b0d0d] to-[#e53935]", dot: "#ef4444" },
+  { name: "Audi", accent: "from-[#1f1f1f] to-[#4b5563]", dot: "#d1d5db" },
+];
 
 const services = [
   "BMW ve Mercedes orijinal cihazlarla arıza tespiti",
@@ -40,14 +58,30 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-2">
-              {brands.map((brand) => (
-                <span
-                  key={brand}
-                  className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-100"
+            <div className="grid w-full gap-3 sm:grid-cols-2 md:grid-cols-3">
+              {brands.map((brand, idx) => (
+                <div
+                  key={brand.name}
+                  className={`relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-r ${brand.accent} p-3 text-sm font-semibold text-white shadow-lg shadow-black/20 transition hover:-translate-y-[2px] hover:shadow-black/30 ${
+                    idx % 2 === 0 ? "animate-float" : "animate-float-slow"
+                  }`}
                 >
-                  #{brand}
-                </span>
+                  <div className="flex items-center gap-3">
+                    <span
+                      className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15 text-xs font-bold"
+                      aria-hidden
+                    >
+                      {brand.name.slice(0, 2).toUpperCase()}
+                    </span>
+                    <span className="uppercase tracking-wide text-xs opacity-90">
+                      {brand.name}
+                    </span>
+                  </div>
+                  <div
+                    className="absolute right-2 top-2 h-2 w-2 rounded-full"
+                    style={{ backgroundColor: brand.dot }}
+                  />
+                </div>
               ))}
             </div>
 
@@ -138,6 +172,47 @@ export default function Home() {
               yönetilir; gerekli olduğunda yetkili servis geçmişiyle uyumlu parçalar kullanılır.
             </div>
           </div>
+        </section>
+
+        <section className="grid gap-4 sm:grid-cols-2">
+          <a
+            href={`tel:+90${contacts[0].phone.replace(/\D/g, "")}`}
+            className="group relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-[#e53935] via-[#ef4444] to-[#f97316] p-5 text-white shadow-2xl shadow-[#e53935]/25 transition hover:-translate-y-[2px]"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/10 opacity-0 transition group-hover:opacity-20" />
+            <p className="text-xs uppercase tracking-[0.3em] text-white/80">
+              Ana CTA
+            </p>
+            <h3 className="mt-2 text-2xl font-bold">Hemen Ara</h3>
+            <p className="mt-2 text-sm text-white/90">
+              {contacts[0].name} · {contacts[0].phone}
+            </p>
+            <p className="text-sm text-white/70">
+              {contacts[1].name} · {contacts[1].phone}
+            </p>
+            <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-wide">
+              📞 Tek dokunuşla ara
+            </div>
+          </a>
+
+          <a
+            href={mapLink}
+            target="_blank"
+            rel="noreferrer"
+            className="group relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-[#0ea5e9] via-[#6366f1] to-[#0ea5e9] p-5 text-white shadow-2xl shadow-[#0ea5e9]/25 transition hover:-translate-y-[2px]"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/10 opacity-0 transition group-hover:opacity-20" />
+            <p className="text-xs uppercase tracking-[0.3em] text-white/80">
+              Ana CTA
+            </p>
+            <h3 className="mt-2 text-2xl font-bold">Navigasyonda Aç</h3>
+            <p className="mt-2 text-sm text-white/80">
+              Tek tıkla haritada konuma git, güzergâhı başlat.
+            </p>
+            <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-wide">
+              🧭 Yol tarifini başlat
+            </div>
+          </a>
         </section>
 
         <section className="grid gap-6 rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl shadow-black/30 backdrop-blur sm:grid-cols-2">
