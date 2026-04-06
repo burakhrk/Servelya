@@ -84,7 +84,7 @@ function MarqueeBrands() {
   }, []);
 
   return (
-    <div className="group relative w-full overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-3 shadow-inner">
+    <div className="group relative w-full overflow-hidden rounded-2xl border border-white/10 bg-white/5 px-1 py-2 shadow-inner">
       <div
         ref={trackRef}
         className={`flex items-center gap-6 overflow-x-auto px-1 py-1 scrollbar-hide ${
