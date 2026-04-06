@@ -51,14 +51,17 @@ function MarqueeBrands() {
   const items = [...brands, ...brands];
 
   return (
-    <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-3 shadow-inner">
+    <div className="group relative -mx-4 sm:-mx-6 lg:-mx-8 overflow-hidden px-4 sm:px-6 lg:px-8">
       <div
         ref={trackRef}
         className={`marquee-track flex items-center gap-6 overflow-x-auto px-1 py-1 scrollbar-hide ${
           dragging ? "cursor-grabbing" : "cursor-grab"
         }`}
         style={{ animationPlayState: dragging ? "paused" : "running" }}
-        onMouseDown={(e) => handlePointerDown(e.clientX)}
+        onMouseDown={(e) => {
+          e.preventDefault();
+          handlePointerDown(e.clientX);
+        }}
         onMouseMove={(e) => handlePointerMove(e.clientX)}
         onMouseUp={stopDrag}
         onMouseLeave={stopDrag}
