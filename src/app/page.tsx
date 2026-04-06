@@ -1,22 +1,4 @@
-const brands = [
-  {
-    name: "BMW",
-    accent: "from-[#1c2c63] to-[#3f74f2]",
-    dot: "#3b82f6",
-  },
-  {
-    name: "Mercedes",
-    accent: "from-[#1a1f2c] to-[#6b7280]",
-    dot: "#9ca3af",
-  },
-  {
-    name: "Range Rover",
-    accent: "from-[#0b3622] to-[#1f8a4c]",
-    dot: "#22c55e",
-  },
-  { name: "Porsche", accent: "from-[#3b0d0d] to-[#e53935]", dot: "#ef4444" },
-  { name: "Audi", accent: "from-[#1f1f1f] to-[#4b5563]", dot: "#d1d5db" },
-];
+const brands = ["BMW", "Mercedes", "Range Rover", "Porsche", "Audi"];
 
 const services = [
   "BMW ve Mercedes orijinal cihazlarla arıza tespiti",
@@ -58,30 +40,17 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid w-full gap-3 sm:grid-cols-2 md:grid-cols-3">
-              {brands.map((brand, idx) => (
-                <div
-                  key={brand.name}
-                  className={`relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-r ${brand.accent} p-3 text-sm font-semibold text-white shadow-lg shadow-black/20 transition hover:-translate-y-[2px] hover:shadow-black/30 ${
-                    idx % 2 === 0 ? "animate-float" : "animate-float-slow"
-                  }`}
+            <div className="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-wide text-slate-200">
+              {brands.map((brand) => (
+                <span
+                  key={brand}
+                  className="inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-1"
                 >
-                  <div className="flex items-center gap-3">
-                    <span
-                      className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15 text-xs font-bold"
-                      aria-hidden
-                    >
-                      {brand.name.slice(0, 2).toUpperCase()}
-                    </span>
-                    <span className="uppercase tracking-wide text-xs opacity-90">
-                      {brand.name}
-                    </span>
-                  </div>
-                  <div
-                    className="absolute right-2 top-2 h-2 w-2 rounded-full"
-                    style={{ backgroundColor: brand.dot }}
-                  />
-                </div>
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full border border-white/20 bg-white/5 text-[10px] font-bold text-white">
+                    {brand.slice(0, 2)}
+                  </span>
+                  {brand}
+                </span>
               ))}
             </div>
 
@@ -199,9 +168,8 @@ export default function Home() {
             href={mapLink}
             target="_blank"
             rel="noreferrer"
-            className="group relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-[#0ea5e9] via-[#6366f1] to-[#0ea5e9] p-5 text-white shadow-2xl shadow-[#0ea5e9]/25 transition hover:-translate-y-[2px]"
+            className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-5 text-white shadow-2xl shadow-black/25 transition hover:-translate-y-[2px]"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/10 opacity-0 transition group-hover:opacity-20" />
             <p className="text-xs uppercase tracking-[0.3em] text-white/80">
               Ana CTA
             </p>
@@ -209,7 +177,16 @@ export default function Home() {
             <p className="mt-2 text-sm text-white/80">
               Tek tıkla haritada konuma git, güzergâhı başlat.
             </p>
-            <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-wide">
+            <div className="mt-4 flex items-center gap-3 rounded-2xl border border-white/10 bg-black/30 p-3">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#0ea5e9] to-[#22d3ee] text-xl">
+                🗺️
+              </div>
+              <div className="flex flex-col text-sm text-slate-200">
+                <span className="font-semibold text-white">Haritada aç</span>
+                <span className="text-slate-300">Google Maps yönlendirme</span>
+              </div>
+            </div>
+            <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white/90">
               🧭 Yol tarifini başlat
             </div>
           </a>
