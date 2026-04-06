@@ -8,7 +8,10 @@ const services = [
   "Lastik-jant, rot-balans ve yol yardım yönlendirmesi",
 ];
 
-const phones = ["0507 136 08 50", "0543 942 54 33"];
+const contacts = [
+  { name: "Mehmet Ali H.", phone: "0507 136 08 50" },
+  { name: "Hasan Y.", phone: "0543 942 54 33" },
+];
 
 const mapLink =
   "https://www.google.com/maps/search/Servelya+Premium+Car+Service";
@@ -50,7 +53,7 @@ export default function Home() {
 
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <a
-                href={`tel:+90${phones[0].replace(/\D/g, "")}`}
+                href={`tel:+90${contacts[0].phone.replace(/\D/g, "")}`}
                 className="inline-flex items-center justify-center rounded-full bg-[#e53935] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[#e53935]/30 transition hover:-translate-y-[1px] hover:bg-[#cf2f2c]"
               >
                 Hemen Ara
@@ -66,25 +69,31 @@ export default function Home() {
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <p className="text-xs uppercase tracking-[0.2em] text-slate-300">
-                  İletişim
-                </p>
-                <div className="mt-2 space-y-1 text-lg font-semibold">
-                  {phones.map((phone) => (
-                    <a
-                      key={phone}
-                      href={`tel:+90${phone.replace(/\D/g, "")}`}
-                      className="block text-slate-50 hover:text-white"
-                    >
-                      {phone}
-                    </a>
-                  ))}
+              {contacts.map((contact) => (
+                <div
+                  key={contact.phone}
+                  className="rounded-2xl border border-white/10 bg-white/5 p-4"
+                >
+                  <p className="text-xs uppercase tracking-[0.2em] text-slate-300">
+                    İletişim
+                  </p>
+                  <p className="mt-2 text-lg font-semibold text-white">
+                    {contact.name}
+                  </p>
+                  <a
+                    href={`tel:+90${contact.phone.replace(/\D/g, "")}`}
+                    className="mt-1 inline-flex w-max items-center gap-2 text-base font-semibold text-slate-50 hover:text-white"
+                  >
+                    📞 {contact.phone}
+                  </a>
+                  <a
+                    href={`tel:+90${contact.phone.replace(/\D/g, "")}`}
+                    className="mt-3 inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white transition hover:border-white/40 hover:bg-white/15"
+                  >
+                    Hemen ara
+                  </a>
                 </div>
-                <p className="mt-3 text-sm text-slate-300">
-                  Mehmet Ali H. · Hasan Y.
-                </p>
-              </div>
+              ))}
 
               <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-white/10 via-white/5 to-transparent p-4">
                 <p className="text-xs uppercase tracking-[0.2em] text-slate-300">
@@ -144,13 +153,13 @@ export default function Home() {
               randevu alabilirsiniz.
             </p>
             <div className="flex flex-col gap-2 text-sm text-slate-100">
-              {phones.map((phone) => (
+              {contacts.map((contact) => (
                 <a
-                  key={phone}
-                  href={`tel:+90${phone.replace(/\D/g, "")}`}
+                  key={contact.phone}
+                  href={`tel:+90${contact.phone.replace(/\D/g, "")}`}
                   className="inline-flex w-max items-center gap-2 rounded-full border border-white/10 px-4 py-2 transition hover:border-white/30"
                 >
-                  📞 {phone}
+                  📞 {contact.name} — {contact.phone}
                 </a>
               ))}
               <a
