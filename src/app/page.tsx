@@ -51,7 +51,7 @@ function MarqueeBrands() {
   const items = [...brands, ...brands];
 
   return (
-    <div className="group relative -mx-4 sm:-mx-6 lg:-mx-8 overflow-hidden px-4 sm:px-6 lg:px-8">
+    <div className="group relative w-full overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-3 shadow-inner">
       <div
         ref={trackRef}
         className={`marquee-track flex items-center gap-6 overflow-x-auto px-1 py-1 scrollbar-hide ${
@@ -99,7 +99,7 @@ export default function Home() {
         <div className="absolute right-0 top-32 h-72 w-72 rounded-full bg-[#ef4444]/10 blur-3xl" />
       </div>
 
-      <main className="relative z-10 mx-auto flex max-w-6xl flex-col gap-16 px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+      <main className="relative z-10 mx-auto flex w-full max-w-6xl flex-col gap-16 px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
         <section className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-6">
             <p className="text-xs uppercase tracking-[0.35em] text-slate-300">
