@@ -40,12 +40,12 @@ export default function Home() {
               Premium Car Service
             </p>
             <div className="space-y-3">
-              <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
+              <h1 className="text-4xl font-extrabold tracking-tight text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text sm:text-5xl">
                 Servelya Premium
               </h1>
               <p className="text-lg text-slate-200 sm:text-xl">
-                BMW, Mercedes, Range Rover, Porsche ve Audi araçlar için
-                güvenli, hızlı ve özenli servis.
+                <span className="text-white">BMW, Mercedes, Range Rover, Porsche, Audi</span>{" "}
+                araçlar için güvenli, hızlı ve özenli servis.
               </p>
             </div>
 
@@ -86,18 +86,26 @@ export default function Home() {
                   key={contact.phone}
                   className="rounded-2xl border border-white/10 bg-white/5 p-4"
                 >
-                  <p className="text-xs uppercase tracking-[0.2em] text-slate-300">
-                    İletişim
-                  </p>
+                  <div className="flex items-center justify-between">
+                    <p className="text-xs uppercase tracking-[0.2em] text-slate-300">
+                      İletişim
+                    </p>
+                    <a
+                      href={`tel:${contact.phone.replace(/\D/g, "")}`}
+                      className="text-[11px] font-semibold uppercase tracking-wide text-[#f97316] hover:text-[#fb923c]"
+                    >
+                      Ara
+                    </a>
+                  </div>
                   <p className="mt-2 text-lg font-semibold text-white">
                     {contact.name}
                   </p>
                   <a
-                href={`tel:${contact.phone.replace(/\D/g, "")}`}
-                className="mt-1 inline-flex w-max items-center gap-2 text-base font-semibold text-slate-50 hover:text-white"
-              >
-                📞 {contact.phone}
-              </a>
+                    href={`tel:${contact.phone.replace(/\D/g, "")}`}
+                    className="mt-1 inline-flex w-max items-center gap-2 text-base font-semibold text-slate-50 hover:text-white"
+                  >
+                    📞 {contact.phone}
+                  </a>
                 </div>
               ))}
 
@@ -172,7 +180,7 @@ export default function Home() {
                 <span className="text-white/70 text-xs">iOS için</span>
               </a>
             </div>
-            <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white/90">
+            <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white/90 bg-white/5">
               Navigasyonda Aç
             </div>
           </div>
@@ -186,10 +194,10 @@ export default function Home() {
             <h3 className="text-2xl font-bold text-white">
               Servelya Premium Servis
             </h3>
-            <p className="text-sm text-slate-200">
-              Navigasyonda “Servelya Premium” araması ile bize ulaşabilir, arayarak Aynı gün için
-              randevu alabilirsiniz.
-            </p>
+                <p className="text-sm text-slate-200">
+                  Navigasyonda “Servelya Premium” araması ile bize ulaşabilir, arayarak aynı gün
+                  randevu alabilirsiniz.
+                </p>
             <div className="flex flex-col gap-2 text-sm text-slate-100">
               {contacts.map((contact) => (
                 <a
