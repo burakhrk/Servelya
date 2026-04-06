@@ -13,8 +13,8 @@ const brands = [
 const services = [
   "BMW ve Mercedes orijinal cihazlarla arıza tespiti",
   "Periyodik bakım, fren ve süspansiyon",
-  "Kaporta, boya ve lokal onarım",
-  "Detaylı temizlik, seramik koruma ve iç-dış bakım",
+  "Kaporta ve lokal onarım",
+  "Motor rektifiye ve performans testi",
   "Lastik-jant, rot-balans ve yol yardım yönlendirmesi",
 ];
 
