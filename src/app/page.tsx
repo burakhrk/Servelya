@@ -1,5 +1,7 @@
-﻿import Image from "next/image";
+﻿"use client";
 
+import Image from "next/image";
+import { useRef, useState } from "react";
 const brands = [
   { name: "BMW", logo: "/logo-bmw.svg" },
   { name: "Mercedes", logo: "/logo-mercedes.svg" },
@@ -25,6 +27,67 @@ const mapLinkGoogle =
   "https://www.google.com/maps/search/Servelya+Premium+Car+Service";
 const mapLinkApple = "https://maps.apple.com/?q=Servelya%20Premium%20Car%20Service";
 
+function MarqueeBrands() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [dragging, setDragging] = useState(false);
+  const startX = useRef(0);
+  const scrollStart = useRef(0);
+
+  const handlePointerDown = (clientX: number) => {
+    if (!trackRef.current) return;
+    setDragging(true);
+    startX.current = clientX;
+    scrollStart.current = trackRef.current.scrollLeft;
+  };
+
+  const handlePointerMove = (clientX: number) => {
+    if (!dragging || !trackRef.current) return;
+    const delta = clientX - startX.current;
+    trackRef.current.scrollLeft = scrollStart.current - delta;
+  };
+
+  const stopDrag = () => setDragging(false);
+
+  const items = [...brands, ...brands];
+
+  return (
+    <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-3 shadow-inner">
+      <div
+        ref={trackRef}
+        className={`marquee-track flex items-center gap-6 overflow-x-auto px-1 py-1 scrollbar-hide ${
+          dragging ? "cursor-grabbing" : "cursor-grab"
+        }`}
+        style={{ animationPlayState: dragging ? "paused" : "running" }}
+        onMouseDown={(e) => handlePointerDown(e.clientX)}
+        onMouseMove={(e) => handlePointerMove(e.clientX)}
+        onMouseUp={stopDrag}
+        onMouseLeave={stopDrag}
+        onTouchStart={(e) => handlePointerDown(e.touches[0].clientX)}
+        onTouchMove={(e) => handlePointerMove(e.touches[0].clientX)}
+        onTouchEnd={stopDrag}
+      >
+        {items.map((brand, idx) => (
+          <div
+            key={`${brand.name}-${idx}`}
+            className="flex min-w-[120px] items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 shadow-sm backdrop-blur-sm"
+          >
+            <Image
+              src={brand.logo}
+              alt={`${brand.name} logo`}
+              width={36}
+              height={36}
+              className="h-9 w-9 object-contain invert brightness-200"
+            />
+            <span className="text-xs font-semibold uppercase tracking-wide text-slate-200">
+              {brand.name}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <div className="relative overflow-hidden">
@@ -49,25 +112,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-4">
-              {brands.map((brand) => (
-                <div
-                  key={brand.name}
-                  className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2"
-                >
-                  <Image
-                    src={brand.logo}
-                    alt={`${brand.name} logo`}
-                    width={28}
-                    height={28}
-                    className="h-7 w-7 object-contain invert brightness-200"
-                  />
-                  <span className="text-xs font-semibold uppercase tracking-wide text-slate-200">
-                    {brand.name}
-                  </span>
-                </div>
-              ))}
-            </div>
+            <MarqueeBrands />
 
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center" />
 
@@ -145,7 +190,7 @@ export default function Home() {
           </div>
         </section>
 
-                <section className="grid gap-4">
+        <section className="grid gap-4">
           <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-5 text-white shadow-2xl shadow-black/25">
             <h3 className="text-2xl font-bold">Navigasyonda Aç</h3>
             <p className="mt-2 text-sm text-white/80">
@@ -233,6 +278,7 @@ export default function Home() {
     </div>
   );
 }
+
 
 
 

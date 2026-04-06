@@ -58,3 +58,29 @@ body {
   background-size: 200% 200%;
   animation: shine 8s linear infinite;
 }
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 24s linear infinite;
+}
+
+.group:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
