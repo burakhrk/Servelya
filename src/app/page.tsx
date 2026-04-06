@@ -110,8 +110,8 @@ export default function Home() {
                 Servelya Premium
               </h1>
               <p className="text-lg text-slate-200 sm:text-xl">
-                <span className="text-white">BMW, Mercedes, Range Rover, Porsche, Audi</span>{" "}
-                araçlar için güvenli, hızlı ve özenli servis.
+                <span className="text-white">Alman premium</span> (BMW, Mercedes, Audi, Porsche) ve
+                Range Rover araçlarda uzman teşhis, bakım ve onarım.
               </p>
             </div>
 
