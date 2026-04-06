@@ -15,7 +15,18 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Servelya Premium | Oto Servis",
   description:
-    "BMW, Mercedes, Range Rover, Porsche ve Audi için premium servis ve bakım. Servelya Premium ile güvenli ve hızlı çözüm.",
+    "Alman araçlarda uzman teşhis, bakım ve onarım. Servelya Premium ile güvenli ve hızlı çözüm.",
+  metadataBase: new URL("https://servelya.vercel.app"),
+  icons: {
+    icon: "/icon.png",
+    apple: "/apple-icon.png",
+  },
+  openGraph: {
+    title: "Servelya Premium | Oto Servis",
+    description:
+      "Alman araçlarda uzman teşhis, bakım ve onarım. Servelya Premium ile güvenli ve hızlı çözüm.",
+    images: ["/opengraph-image.png"],
+  },
 };
 
 export default function RootLayout({
