@@ -30,7 +30,7 @@ function MarqueeBrands() {
   const items = [...brands, ...brands];
 
   return (
-    <div className="relative w-full overflow-hidden rounded-2xl border border-white/10 bg-white/5 py-3 shadow-inner box-border">
+    <div className="relative w-full overflow-hidden py-3">
       <div className="absolute left-0 top-0 flex w-max items-center gap-6 py-1 pl-3 animate-marquee">
         {items.map((brand, idx) => (
           <div
