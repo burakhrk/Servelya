@@ -56,7 +56,7 @@ export default function Home() {
 
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <a
-                href={`tel:+90${contacts[0].phone.replace(/\D/g, "")}`}
+                href={`tel:${contacts[0].phone.replace(/\D/g, "")}`}
                 className="inline-flex items-center justify-center rounded-full bg-[#e53935] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[#e53935]/30 transition hover:-translate-y-[1px] hover:bg-[#cf2f2c]"
               >
                 Hemen Ara
@@ -84,13 +84,13 @@ export default function Home() {
                     {contact.name}
                   </p>
                   <a
-                    href={`tel:+90${contact.phone.replace(/\D/g, "")}`}
-                    className="mt-1 inline-flex w-max items-center gap-2 text-base font-semibold text-slate-50 hover:text-white"
-                  >
-                    📞 {contact.phone}
-                  </a>
+                href={`tel:${contact.phone.replace(/\D/g, "")}`}
+                className="mt-1 inline-flex w-max items-center gap-2 text-base font-semibold text-slate-50 hover:text-white"
+              >
+                📞 {contact.phone}
+              </a>
                   <a
-                    href={`tel:+90${contact.phone.replace(/\D/g, "")}`}
+                    href={`tel:${contact.phone.replace(/\D/g, "")}`}
                     className="mt-3 inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white transition hover:border-white/40 hover:bg-white/15"
                   >
                     Hemen ara
@@ -208,11 +208,11 @@ export default function Home() {
               {contacts.map((contact) => (
                 <a
                   key={contact.phone}
-                  href={`tel:+90${contact.phone.replace(/\D/g, "")}`}
-                  className="inline-flex w-max items-center gap-2 rounded-full border border-white/10 px-4 py-2 transition hover:border-white/30"
-                >
-                  📞 {contact.name} — {contact.phone}
-                </a>
+                href={`tel:${contact.phone.replace(/\D/g, "")}`}
+                className="inline-flex w-max items-center gap-2 rounded-full border border-white/10 px-4 py-2 transition hover:border-white/30"
+              >
+                📞 {contact.name} — {contact.phone}
+              </a>
               ))}
               <a
                 href={mapLink}
